@@ -47,7 +47,7 @@ gulp.task('style', () =>
 
 gulp.task('cpd', () =>
   gulp
-    .src(allFiles)
+    .src(libFiles)
     .pipe(jsinspect({
       threshold: 45,
       identifiers: true,

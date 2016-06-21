@@ -12,7 +12,7 @@ const errString = 'Not a valid Number';
 
 describe('Number', () => {
 
-  describe('returns success with the converted number when called with an integer convertable string', () => {
+  describe('returns success when called with an integer convertable string', () => {
     const result = HVNumber(convertsInt);
 
     it('is a Validation Object', () => result.should.be.instanceof(Validation));
@@ -20,7 +20,7 @@ describe('Number', () => {
     it('has value that is converted', () => result.value.should.equal(2));
   });
 
-  describe('returns success with the converted number when called with a float convertable string', () => {
+  describe('returns success when called with a float convertable string', () => {
     const result = HVNumber(convertsFloat);
 
     it('is a Validation Object', () => result.should.be.instanceof(Validation));
@@ -28,7 +28,7 @@ describe('Number', () => {
     it('has value that is converted', () => result.value.should.equal(2.2));
   });
 
-  describe('returns failed with an error message when called with a non-convertable string', () => {
+  describe('returns failed when called with a non-convertable string', () => {
     const result = HVNumber(doesntConvert);
 
     it('is a Validation Object', () => result.should.be.instanceof(Validation));
@@ -37,7 +37,7 @@ describe('Number', () => {
     it('has Array which contains expected String', () => result.value.should.is.eql([errString]));
   });
 
-  describe('returns failed with an error message when called with null', () => {
+  describe('returns failed when called with null', () => {
     const result = HVNumber(null);
 
     it('is a Validation Object', () => result.should.be.instanceof(Validation));
@@ -46,7 +46,7 @@ describe('Number', () => {
     it('has Array that contains expected String', () => result.value.should.is.eql([errString]));
   });
 
-  describe('returns failed with an error message when called with undefined', () => {
+  describe('returns failed when called with undefined', () => {
     const result = HVNumber();
 
     it('is a Validation Object', () => result.should.be.instanceof(Validation));

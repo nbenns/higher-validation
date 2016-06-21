@@ -9,6 +9,7 @@ const Failure = Validation.Failure;
 const Success = Validation.Success;
 
 const value = [1];
+const notanArray = 2;
 const failureString = 'failure';
 const valid = Success;
 const invalid = () => Failure([failureString]);
@@ -17,6 +18,17 @@ describe('Array', () => {
   describe('returns failure when called with null input', () => {
     const spyValid = sinon.spy(valid);
     const result = HVArray(spyValid, null);
+
+    it('is a Validation Object', () => result.should.be.instanceof(Validation));
+    it('is a Failure', () => result.isFailure.should.be.true);
+    it('contains an Array', () => result.value.should.be.instanceof(Array));
+    it('has Array which contains correct String', () => result.value[0].should.equal('Not a valid Array'));
+    it('doesn\'t execute type function', () => spyValid.called.should.be.false);
+  });
+
+  describe('returns failure when called with a non-Array', () => {
+    const spyValid = sinon.spy(valid);
+    const result = HVArray(spyValid, notanArray);
 
     it('is a Validation Object', () => result.should.be.instanceof(Validation));
     it('is a Failure', () => result.isFailure.should.be.true);

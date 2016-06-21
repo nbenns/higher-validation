@@ -20,6 +20,16 @@ describe('Index', () => {
     it('has a property Number that is a Function', () => HV.Number.should.be.instanceof(Function));
   });
 
+  describe('Exports String', () => {
+    it('has a property called String', () => Object.keys(HV).should.contains('String'));
+    it('has a property String that is a Function', () => HV.String.should.be.instanceof(Function));
+  });
+
+  describe('Exports UUID', () => {
+    it('has a property called UUID', () => Object.keys(HV).should.contains('UUID'));
+    it('has a property UUID that is a Function', () => HV.UUID.should.be.instanceof(Function));
+  });
+
   describe('Exports Type', () => {
     it('has a property called Type', () => Object.keys(HV).should.contains('Type'));
     it('has a property Type that is a Function', () => HV.Type.should.be.instanceof(Function));

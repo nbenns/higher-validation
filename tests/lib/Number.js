@@ -8,6 +8,8 @@ const convertsInt = '2';
 const convertsFloat = '2.2';
 const doesntConvert = 'abc';
 
+const errString = 'Not a valid Number';
+
 describe('Number', () => {
 
   describe('returns success with the converted number when called with an integer convertable string', () => {
@@ -32,7 +34,7 @@ describe('Number', () => {
     it('is a Validation Object', () => result.should.be.instanceof(Validation));
     it('is a Failure', () => result.isFailure.should.be.true);
     it('has value that is an Array', () => result.value.should.be.instanceof(Array));
-    it('has Array which contains expected String', () => result.value.should.is.eql(['Not a valid Number']));
+    it('has Array which contains expected String', () => result.value.should.is.eql([errString]));
   });
 
   describe('returns failed with an error message when called with null', () => {
@@ -41,7 +43,7 @@ describe('Number', () => {
     it('is a Validation Object', () => result.should.be.instanceof(Validation));
     it('is a Failure', () => result.isFailure.should.be.true);
     it('has value that is an Array', () => result.value.should.be.instanceof(Array));
-    it('has Array that contains expected String', () => result.value.should.is.eql(['Not a valid Number']));
+    it('has Array that contains expected String', () => result.value.should.is.eql([errString]));
   });
 
   describe('returns failed with an error message when called with undefined', () => {
@@ -50,7 +52,7 @@ describe('Number', () => {
     it('is a Validation Object', () => result.should.be.instanceof(Validation));
     it('is a Failure', () => result.isFailure.should.be.true);
     it('has value that is an Array', () => result.value.should.be.instanceof(Array));
-    it('has Array which contains expected String', () => result.value.should.is.eql(['Not a valid Number']));
+    it('has Array which contains expected String', () => result.value.should.is.eql([errString]));
   });
 
 });

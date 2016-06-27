@@ -7,6 +7,7 @@ module.exports = {
   String: require('./lib/String'),
   UUID: require('./lib/UUID'),
   URL: require('./lib/URL'),
+  Email: require('./lib/Email'),
   Type: require('./lib/Type')
 };
 

@@ -35,6 +35,11 @@ describe('Index', () => {
     it('has a property URL that is a Function', () => HV.URL.should.be.instanceof(Function));
   });
 
+  describe('Exports Email', () => {
+    it('has a property called Email', () => Object.keys(HV).should.contains('Email'));
+    it('has a property Email that is a Function', () => HV.Email.should.be.instanceof(Function));
+  });
+
   describe('Exports Type', () => {
     it('has a property called Type', () => Object.keys(HV).should.contains('Type'));
     it('has a property Type that is a Function', () => HV.Type.should.be.instanceof(Function));

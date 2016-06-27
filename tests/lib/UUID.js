@@ -10,13 +10,11 @@ const validUUID = uuid.v4();
 const validString = 'test';
 const invalidValue = 123;
 
-const uuidErrString = 'Not a valid UUID';
-const strErrString = 'Not a valid String';
+const errString = 'Not a valid UUID';
 
 describe('UUID', () => {
 
   describe('returns Success when called with a UUID', () => {
-	  
     const result = HVUUID(validUUID);
 
     it('is a Validation Object', () => result.should.be.instanceof(Validation));
@@ -30,7 +28,7 @@ describe('UUID', () => {
     it('is a Validation Object', () => result.should.be.instanceof(Validation));
     it('is a Failure', () => result.isFailure.should.be.true);
     it('has value that is an Array', () => result.value.should.be.instanceof(Array));
-    it('has Array which contains expected String', () => result.value.should.is.eql([uuidErrString]));
+    it('has Array which contains expected String', () => result.value.should.is.eql([errString]));
   });
 
   describe('returns failed when called with a non-string', () => {
@@ -39,7 +37,7 @@ describe('UUID', () => {
     it('is a Validation Object', () => result.should.be.instanceof(Validation));
     it('is a Failure', () => result.isFailure.should.be.true);
     it('has value that is an Array', () => result.value.should.be.instanceof(Array));
-    it('has Array which contains expected String', () => result.value.should.is.eql([strErrString, uuidErrString]));
+    it('has Array which contains expected String', () => result.value.should.is.eql([errString]));
   });
 
   describe('returns when called with null', () => {
@@ -48,7 +46,7 @@ describe('UUID', () => {
     it('is a Validation Object', () => result.should.be.instanceof(Validation));
     it('is a Failure', () => result.isFailure.should.be.true);
     it('has value that is an Array', () => result.value.should.be.instanceof(Array));
-    it('has Array that contains expected String', () => result.value.should.is.eql([strErrString, uuidErrString]));
+    it('has Array that contains expected String', () => result.value.should.is.eql([errString]));
   });
 
   describe('returns failed with an error message when called with undefined', () => {
@@ -57,7 +55,7 @@ describe('UUID', () => {
     it('is a Validation Object', () => result.should.be.instanceof(Validation));
     it('is a Failure', () => result.isFailure.should.be.true);
     it('has value that is an Array', () => result.value.should.be.instanceof(Array));
-    it('has Array which contains expected String', () => result.value.should.is.eql([strErrString, uuidErrString]));
+    it('has Array which contains expected String', () => result.value.should.is.eql([errString]));
   });
 
 });

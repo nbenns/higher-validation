@@ -6,6 +6,7 @@ module.exports = {
   Array: require('./lib/Array'),
   String: require('./lib/String'),
   UUID: require('./lib/UUID'),
+  URL: require('./lib/URL'),
   Type: require('./lib/Type')
 };
 

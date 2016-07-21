@@ -59,4 +59,9 @@ describe('Index', () => {
     it('has a property Nullable that is a Function', () => HV.Nullable.should.be.instanceof(Function));
   });
 
+  describe('Exports Optional', () => {
+    it('has a property called Optional', () => Object.keys(HV).should.contains('Optional'));
+    it('has a property Optional that is a Function', () => HV.Optional.should.be.instanceof(Function));
+  });
+
 });

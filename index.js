@@ -11,6 +11,7 @@ module.exports = {
   URL: require('./lib/URL'),
   Email: require('./lib/Email'),
   Type: require('./lib/Type'),
-  Nullable: require('./lib/Nullable')
+  Nullable: require('./lib/Nullable'),
+  Optional: require('./lib/Optional')
 };
 

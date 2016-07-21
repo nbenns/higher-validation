@@ -4,6 +4,10 @@ const HV = require('../index');
 require('chai').should();
 
 describe('Index', () => {
+  describe('Exports Any', () => {
+    it('has a property called Any', () => Object.keys(HV).should.contains('Any'));
+    it('has a property Any that is a Function', () => HV.Any.should.be.instanceof(Function));
+  });
 
   describe('Exports Object', () => {
     it('has a property called Object', () => Object.keys(HV).should.contains('Object'));

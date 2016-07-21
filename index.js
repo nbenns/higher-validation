@@ -1,6 +1,7 @@
 'use strict';
 
 module.exports = {
+  Any: require('./lib/Any'),
   Number: require('./lib/Number'),
   Object: require('./lib/Object'),
   Array: require('./lib/Array'),

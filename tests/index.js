@@ -9,6 +9,11 @@ describe('Index', () => {
     it('has a property Any that is a Function', () => HV.Any.should.be.instanceof(Function));
   });
 
+  describe('Exports None', () => {
+    it('has a property called None', () => Object.keys(HV).should.contains('None'));
+    it('has a property None that is a Function', () => HV.None.should.be.instanceof(Function));
+  });
+
   describe('Exports Object', () => {
     it('has a property called Object', () => Object.keys(HV).should.contains('Object'));
     it('has a property Object that is a Function', () => HV.Object.should.be.instanceof(Function));
@@ -47,6 +52,11 @@ describe('Index', () => {
   describe('Exports Type', () => {
     it('has a property called Type', () => Object.keys(HV).should.contains('Type'));
     it('has a property Type that is a Function', () => HV.Type.should.be.instanceof(Function));
+  });
+
+  describe('Exports Nullable', () => {
+    it('has a property called Nullable', () => Object.keys(HV).should.contains('Nullable'));
+    it('has a property Nullable that is a Function', () => HV.Nullable.should.be.instanceof(Function));
   });
 
 });

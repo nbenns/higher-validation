@@ -2,6 +2,7 @@
 
 module.exports = {
   Any: require('./lib/Any'),
+  None: require('./lib/None'),
   Number: require('./lib/Number'),
   Object: require('./lib/Object'),
   Array: require('./lib/Array'),
@@ -9,6 +10,7 @@ module.exports = {
   UUID: require('./lib/UUID'),
   URL: require('./lib/URL'),
   Email: require('./lib/Email'),
-  Type: require('./lib/Type')
+  Type: require('./lib/Type'),
+  Nullable: require('./lib/Nullable')
 };
 

@@ -2,39 +2,48 @@
 
 const HV = require('../index');
 
-const subModel = {
-  bob: {isRequired: true, type: HV.Number},
-  jim: {isRequired: true, type: HV.Number}
-};
+const subModel = HV.Object({
+  bob: HV.Number,
+  jim: HV.Number
+});
 
 const model = {
-  first: {isRequired: true, type: HV.Number},
-  second: {isRequired: false, type: HV.Number},
-  third: {isRequired: true},
-  fourth: {},
-  fifth: {isRequired: false, type: HV.Number},
-  sixth: {isRequired: true, type: HV.Number},
-  seventh: {isRequired: true, type: HV.Object(subModel)},
-  eighth: {isRequired: false},
-  nineth: {isRequired: true, type: HV.Array(HV.Number)}
+  first: HV.Number,
+  second: HV.Optional(HV.Number),
+  third: HV.Optional(HV.Any),
+  fourth: HV.Any,
+  fifth: HV.Optional(HV.Number),
+  sixth: HV.Optional(HV.Number),
+  seventh: subModel,
+  eighth: HV.Any,
+  nineth: HV.Array(HV.Number),
+  ten: HV.Optional(HV.Array(subModel))
 };
 
 const obj = {
   first: '2',
   second: '2',
-  third: '2',
   fourth: '2',
-  fifth: 'abc',
+  fifth: '5',
   seventh: {
+    // jim: 2,
     bob: '3'
   },
   eighth: undefined,
-  nineth: [2,3,'abc']
+  nineth: [1, '2', 3, 'four'],
+  ten: [
+    {
+      bob: 2,
+      jim: 3
+    },
+    {
+      bob: 5,
+      jim: 'hi'
+    }
+  ]
 };
 
 const results = HV.Object(model, obj);
 
 console.log(results);
 
-console.log(HV.Object(model, 2));
-console.log(HV.Object(model, null));

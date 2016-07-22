@@ -94,4 +94,5 @@ gulp.task('submit-coverage', ['test'], () =>
 );
 
 gulp.task('check', ['lint', 'style', 'cpd', 'security', 'check-deps']);
-gulp.task('default', ['check', 'submit-coverage']);
+gulp.task('default', ['check', 'test']);
+gulp.task('travis', ['check', 'submit-coverage']);

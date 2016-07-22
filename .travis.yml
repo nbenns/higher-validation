@@ -3,4 +3,4 @@ node_js:
 - 6.2.2
 before_script:
 - npm install -g gulp
-script: gulp default
+script: gulp travis

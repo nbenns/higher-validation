@@ -10,6 +10,7 @@ const checkDeps = require('gulp-check-deps');
 const istanbul = require('gulp-istanbul');
 const isparta = require('isparta');
 const mocha = require('gulp-mocha');
+const coveralls = require('gulp-coveralls');
 
 const libFiles = [
   'index.js',
@@ -86,5 +87,11 @@ gulp.task('test', ['pretest'], () =>
     .pipe(istanbul.enforceThresholds({thresholds: {global: 85}}))
 );
 
+gulp.task('submit-coverage', ['test'], () =>
+  gulp
+    .src('coverage/**/lcov.info')
+    .pipe(coveralls())
+);
+
 gulp.task('check', ['lint', 'style', 'cpd', 'security', 'check-deps']);
-gulp.task('default', ['check', 'test']);
+gulp.task('default', ['check', 'submit-coverage']);

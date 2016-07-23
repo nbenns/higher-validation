@@ -12,6 +12,7 @@ module.exports = {
   Email: require('./lib/Email'),
   Type: require('./lib/Type'),
   Nullable: require('./lib/Nullable'),
-  Optional: require('./lib/Optional')
+  Optional: require('./lib/Optional'),
+  Range: require('./lib/Range')
 };
 

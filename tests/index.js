@@ -64,4 +64,9 @@ describe('Index', () => {
     it('has a property Optional that is a Function', () => HV.Optional.should.be.instanceof(Function));
   });
 
+  describe('Exports Range', () => {
+    it('has a property called Range', () => Object.keys(HV).should.contains('Range'));
+    it('has a property Range that is a Function', () => HV.Range.should.be.instanceof(Function));
+  });
+
 });

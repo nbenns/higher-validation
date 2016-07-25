@@ -13,6 +13,7 @@ module.exports = {
   Type: require('./lib/Type'),
   Nullable: require('./lib/Nullable'),
   Optional: require('./lib/Optional'),
-  Range: require('./lib/Range')
+  Range: require('./lib/Range'),
+  Match: require('./lib/Match')
 };
 

@@ -84,7 +84,6 @@ gulp.task('test', ['pretest'], () =>
     .src(testFiles)
     .pipe(mocha())
     .pipe(istanbul.writeReports())
-    .pipe(istanbul.enforceThresholds({thresholds: {global: 85}}))
 );
 
 gulp.task('submit-coverage', ['test'], () =>

@@ -99,8 +99,14 @@ describe('Map', () => {
     it('is a Validation Object', () => result.should.be.instanceof(Validation));
     it('is a Success', () => result.isSuccess.should.be.true);
     it('contains original value', () => result.value.should.eql(value));
-    it('executes key type function for each value in Map', () => keyType.callCount.should.equal(Object.keys(value).length));
-    it('executes value type function for each value in Map', () => valueType.callCount.should.equal(Object.keys(value).length));
+    it(
+      'executes key type function for each value in Map',
+      () => keyType.callCount.should.equal(Object.keys(value).length)
+    );
+    it(
+      'executes value type function for each value in Map',
+      () => valueType.callCount.should.equal(Object.keys(value).length)
+    );
   });
 
   describe('returns Failure when called with valid type functions and a invalid Key Type in Object', () => {
@@ -112,8 +118,14 @@ describe('Map', () => {
     it('is a Failure', () => result.isFailure.should.be.true);
     it('contains an Array', () => result.value.should.be.instanceof(Array));
     it('has Array which contains correct String', () => result.value.should.eql([`index 0: Key: ${typeError}`]));
-    it('executes key type function for each value in Map', () => keyType.callCount.should.equal(Object.keys(value).length));
-    it('executes value type function for each value in Map', () => valueType.callCount.should.equal(Object.keys(value).length));
+    it(
+      'executes key type function for each value in Map',
+      () => keyType.callCount.should.equal(Object.keys(value).length)
+    );
+    it(
+      'executes value type function for each value in Map',
+      () => valueType.callCount.should.equal(Object.keys(value).length)
+    );
   });
 
   describe('returns Failure when called with valid type functions and a invalid Value Type in Object', () => {
@@ -125,8 +137,14 @@ describe('Map', () => {
     it('is a Failure', () => result.isFailure.should.be.true);
     it('contains an Array', () => result.value.should.be.instanceof(Array));
     it('has Array which contains correct String', () => result.value.should.eql([`index 0: Value: ${typeError}`]));
-    it('executes key type function for each value in Map', () => keyType.callCount.should.equal(Object.keys(value).length));
-    it('executes value type function for each value in Map', () => valueType.callCount.should.equal(Object.keys(value).length));
+    it(
+      'executes key type function for each value in Map',
+      () => keyType.callCount.should.equal(Object.keys(value).length)
+    );
+    it(
+      'executes value type function for each value in Map',
+      () => valueType.callCount.should.equal(Object.keys(value).length)
+    );
   });
 });
 

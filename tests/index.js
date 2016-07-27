@@ -24,6 +24,11 @@ describe('Index', () => {
     it('has a property Array that is a Function', () => HV.Array.should.be.instanceof(Function));
   });
 
+  describe('Exports Map', () => {
+    it('has a property called Map', () => Object.keys(HV).should.contains('Map'));
+    it('has a property Map that is a Function', () => HV.Map.should.be.instanceof(Function));
+  });
+
   describe('Exports Number', () => {
     it('has a property called Number', () => Object.keys(HV).should.contains('Number'));
     it('has a property Number that is a Function', () => HV.Number.should.be.instanceof(Function));

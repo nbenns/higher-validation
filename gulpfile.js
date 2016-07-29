@@ -9,7 +9,7 @@ const nsp = require('gulp-nsp');
 const checkDeps = require('gulp-check-deps');
 const istanbul = require('gulp-istanbul');
 const isparta = require('isparta');
-const mocha = require('gulp-mocha');
+const gulpMocha = require('gulp-mocha');
 const coveralls = require('gulp-coveralls');
 
 const libFiles = [
@@ -29,7 +29,7 @@ const allFiles =
   libFiles
     .concat(examples)
     .concat(testFiles)
-    .concat('gulpfile');
+    .concat('gulpfile.js');
 
 gulp.task('lint', () =>
   gulp
@@ -83,7 +83,7 @@ gulp.task('pretest', () =>
 gulp.task('test', ['pretest'], () =>
   gulp
     .src(testFiles)
-    .pipe(mocha())
+    .pipe(gulpMocha())
     .pipe(istanbul.writeReports())
 );
 

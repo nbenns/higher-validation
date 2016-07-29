@@ -1,7 +1,7 @@
 'use strict';
 
 const gulp = require('gulp');
-const eslint = require('gulp-eslint');
+const jshint = require('gulp-jshint');
 const jscs = require('gulp-jscs');
 const stylishJscs = require('jscs-stylish');
 const jsinspect = require('gulp-jsinspect');
@@ -33,9 +33,10 @@ const allFiles =
 gulp.task('lint', () =>
   gulp
     .src(allFiles)
-    .pipe(eslint())
-    .pipe(eslint.format())
-    .pipe(eslint.failAfterError())
+    .pipe(jshint())
+    //.pipe(jshint.format())
+    .pipe(jshint.reporter('default'))
+    .pipe(jshint.reporter('fail'))
 );
 
 gulp.task('style', () =>

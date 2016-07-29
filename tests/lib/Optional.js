@@ -8,8 +8,8 @@ require('chai').should();
 
 const Failure = Validation.Failure;
 
-const validValue = undefined;
-const invalidValue = null;
+let validValue;
+const invalidValue = 2;
 const errString = 'Not valid';
 const fail = () => Failure([errString]);
 

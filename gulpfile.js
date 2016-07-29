@@ -19,7 +19,7 @@ const libFiles = [
 
 const examples = [
   'examples/**/*.js'
-]
+];
 
 const testFiles = [
   'tests/**/*.js'
@@ -28,13 +28,13 @@ const testFiles = [
 const allFiles =
   libFiles
     .concat(examples)
-    .concat(testFiles);
+    .concat(testFiles)
+    .concat('gulpfile');
 
 gulp.task('lint', () =>
   gulp
     .src(allFiles)
     .pipe(jshint())
-    //.pipe(jshint.format())
     .pipe(jshint.reporter('default'))
     .pipe(jshint.reporter('fail'))
 );
@@ -57,12 +57,12 @@ gulp.task('cpd', () =>
     }))
 );
 
-gulp.task('security', done => {
+gulp.task('security', done =>
   nsp({
     package: __dirname + '/package.json',
     stopOnError: true
   }, done)
-});
+);
 
 gulp.task('check-deps', () =>
   gulp

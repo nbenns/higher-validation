@@ -84,4 +84,9 @@ describe('Index', () => {
     it('has a property Match that is a Function', () => HV.Match.should.be.instanceof(Function));
   });
 
+  describe('Exports Length', () => {
+    it('has a property called Length', () => Object.keys(HV).should.contains('Length'));
+    it('has a property Length that is a Function', () => HV.Length.should.be.instanceof(Function));
+  });
+
 });

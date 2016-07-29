@@ -18,7 +18,7 @@ const errString = `Value doesn't match ${pattern}`;
 describe('Match', () => {
 
   describe('returns success when called with a value matching the pattern', () => {
-    const result = HVMatch(validType, pattern, validValue);
+    const result = HVMatch(pattern, validType, validValue);
 
     it('is a Validation Object', () => result.should.be.instanceof(Validation));
     it('is Successful', () => result.isSuccess.should.be.true);
@@ -26,7 +26,7 @@ describe('Match', () => {
   });
 
   describe('returns failed when called with a value outside the range', () => {
-    const result = HVMatch(validType, pattern, invalidValue);
+    const result = HVMatch(pattern, validType, invalidValue);
 
     it('is a Validation Object', () => result.should.be.instanceof(Validation));
     it('is a Failure', () => result.isFailure.should.be.true);
@@ -35,7 +35,7 @@ describe('Match', () => {
   });
 
   describe('returns failed when called with a value of incorrect type', () => {
-    const result = HVMatch(invalidType, pattern, invalidValue);
+    const result = HVMatch(pattern, invalidType, validValue);
 
     it('is a Validation Object', () => result.should.be.instanceof(Validation));
     it('is a Failure', () => result.isFailure.should.be.true);

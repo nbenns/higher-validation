@@ -16,6 +16,7 @@ module.exports = {
   Nullable: require('./lib/Nullable'),
   Optional: require('./lib/Optional'),
   Range: require('./lib/Range'),
-  Match: require('./lib/Match')
+  Match: require('./lib/Match'),
+  Length: require('./lib/Length')
 };
 

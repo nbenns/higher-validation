@@ -1,7 +1,7 @@
 'use strict';
 
 const gulp = require('gulp');
-const eslint = require('gulp-eslint');
+const jshint = require('gulp-jshint');
 const jscs = require('gulp-jscs');
 const stylishJscs = require('jscs-stylish');
 const jsinspect = require('gulp-jsinspect');
@@ -9,7 +9,7 @@ const nsp = require('gulp-nsp');
 const checkDeps = require('gulp-check-deps');
 const istanbul = require('gulp-istanbul');
 const isparta = require('isparta');
-const mocha = require('gulp-mocha');
+const gulpMocha = require('gulp-mocha');
 const coveralls = require('gulp-coveralls');
 
 const libFiles = [
@@ -19,7 +19,7 @@ const libFiles = [
 
 const examples = [
   'examples/**/*.js'
-]
+];
 
 const testFiles = [
   'tests/**/*.js'
@@ -28,14 +28,15 @@ const testFiles = [
 const allFiles =
   libFiles
     .concat(examples)
-    .concat(testFiles);
+    .concat(testFiles)
+    .concat('gulpfile.js');
 
 gulp.task('lint', () =>
   gulp
     .src(allFiles)
-    .pipe(eslint())
-    .pipe(eslint.format())
-    .pipe(eslint.failAfterError())
+    .pipe(jshint())
+    .pipe(jshint.reporter('default'))
+    .pipe(jshint.reporter('fail'))
 );
 
 gulp.task('style', () =>
@@ -56,12 +57,12 @@ gulp.task('cpd', () =>
     }))
 );
 
-gulp.task('security', done => {
+gulp.task('security', done =>
   nsp({
     package: __dirname + '/package.json',
     stopOnError: true
   }, done)
-});
+);
 
 gulp.task('check-deps', () =>
   gulp
@@ -82,7 +83,7 @@ gulp.task('pretest', () =>
 gulp.task('test', ['pretest'], () =>
   gulp
     .src(testFiles)
-    .pipe(mocha())
+    .pipe(gulpMocha())
     .pipe(istanbul.writeReports())
 );
 

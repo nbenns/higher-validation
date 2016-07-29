@@ -3,6 +3,7 @@
 module.exports = {
   Any: require('./lib/Any'),
   None: require('./lib/None'),
+  Boolean: require('./lib/Boolean'),
   Number: require('./lib/Number'),
   Object: require('./lib/Object'),
   Array: require('./lib/Array'),

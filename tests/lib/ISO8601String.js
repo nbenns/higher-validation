@@ -1,28 +1,28 @@
 'use strict';
 
 const Validation = require('data.validation');
-const HVEmail = require('../../lib/Email');
+const HVISO8601String = require('../../lib/ISO8601String');
 
 require('chai').should();
 
-const validEmail = 'test@test.com';
-const validString = 'test';
+const valid = '2016-08-02T17:31:05+00:00';
+const invalidString = 'test';
 const invalidValue = 123;
 
-const errString = 'Not a valid Email';
+const errString = 'Not a valid ISO8601 String';
 
-describe('Email', () => {
+describe('ISO8601String', () => {
 
-  describe('returns Success when called with an Email', () => {
-    const result = HVEmail(validEmail);
+  describe('returns Success when called with a valid ISO Date', () => {
+    const result = HVISO8601String(valid);
 
     it('is a Validation Object', () => result.should.be.instanceof(Validation));
     it('is a Success', () => result.isSuccess.should.be.true);
-    it('contains a the given value', () => result.value.should.eql(validEmail));
+    it('contains a the given value', () => result.value.should.eql(valid));
   });
 
-  describe('returns Failure when called with a String that is not an Email', () => {
-    const result = HVEmail(validString);
+  describe('returns Failure when called with a String that is not a valid ISO Date', () => {
+    const result = HVISO8601String(invalidString);
 
     it('is a Validation Object', () => result.should.be.instanceof(Validation));
     it('is a Failure', () => result.isFailure.should.be.true);
@@ -31,7 +31,7 @@ describe('Email', () => {
   });
 
   describe('returns failed when called with a non-string', () => {
-    const result = HVEmail(invalidValue);
+    const result = HVISO8601String(invalidValue);
 
     it('is a Validation Object', () => result.should.be.instanceof(Validation));
     it('is a Failure', () => result.isFailure.should.be.true);
@@ -40,7 +40,7 @@ describe('Email', () => {
   });
 
   describe('returns when called with null', () => {
-    const result = HVEmail(null);
+    const result = HVISO8601String(null);
 
     it('is a Validation Object', () => result.should.be.instanceof(Validation));
     it('is a Failure', () => result.isFailure.should.be.true);
@@ -49,7 +49,7 @@ describe('Email', () => {
   });
 
   describe('returns failed with an error message when called with undefined', () => {
-    const result = HVEmail(undefined);
+    const result = HVISO8601String(undefined);
 
     it('is a Validation Object', () => result.should.be.instanceof(Validation));
     it('is a Failure', () => result.isFailure.should.be.true);

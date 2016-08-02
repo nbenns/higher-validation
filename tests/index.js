@@ -59,6 +59,11 @@ describe('Index', () => {
     it('has a property Email that is a Function', () => HV.Email.should.be.instanceof(Function));
   });
 
+  describe('Exports ISO8601String', () => {
+    it('has a property called ISO8601String', () => Object.keys(HV).should.contains('ISO8601String'));
+    it('has a property ISO8601String that is a Function', () => HV.ISO8601String.should.be.instanceof(Function));
+  });
+
   describe('Exports Type', () => {
     it('has a property called Type', () => Object.keys(HV).should.contains('Type'));
     it('has a property Type that is a Function', () => HV.Type.should.be.instanceof(Function));

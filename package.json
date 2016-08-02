@@ -23,11 +23,13 @@
     "gulp-jscs": "^4.0.0",
     "gulp-jshint": "^2.0.1",
     "gulp-jsinspect": "^2.0.0",
+    "gulp-mocha": "^3.0.0",
     "gulp-nsp": "^2.4.1",
     "isparta": "^4.0.0",
     "istanbul": "^0.4.4",
     "jscs-stylish": "^0.3.1",
     "jshint": "^2.9.2",
+    "mocha": "^3.0.0",
     "sinon": "^1.17.4"
   },
   "scripts": {

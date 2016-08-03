@@ -30,7 +30,7 @@ if (myobj) {
 
 You can end up with a giant tree of if statements everywhere just to get to the point of sane code and depending on whether you can fit your logic all together, you may end up validating the same things everywhere in different functions and creating a giant mess of speghetti.
 
-I wanted the benefits of a strongly typed language, but TypeScript, Purescript, Scalajs and Flow weren't cutting my usecase.
+I wanted the benefits of a strongly typed language, but [TypeScript](https://www.typescriptlang.org/), [Purescript](http://www.purescript.org/), [Scalajs](https://www.scala-js.org/) and [Flow](https://flowtype.org/), though pretty cool, weren't cutting my usecase.
 I can manage to keep a strongly typed style on my own and use unit tests to make sure of correctness, but it's really deserialization of types that I found was missing.
 
 I want to make sure some JSON input matched some specific criteria, a model of a complex object that I could guarantee is correct.

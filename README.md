@@ -11,7 +11,7 @@ Javascript's dynamic typing can make it easy to quickly develop simple applicati
 However, there reaches a point where it bites you, usually when you want to guarantee I/O matches a given criteria and it leaves you with code like so:
 
 ```javascript
-/* 
+/*
  * {
  *   a: String,
  *   b: Number
@@ -21,7 +21,7 @@ However, there reaches a point where it bites you, usually when you want to guar
 if (myobj) {
   var a = myobj.a.toString() || "";
   var b = Number(myobj.b);
-  
+
   if (!isNaN(myobj.b)) {
     ...
   }
@@ -65,13 +65,13 @@ There is nothing worse when learning to use an API you get an error and fix one 
 const validateTeam(req, res, next) {
   const team = Team(req.body);
   let err;
-  
+
   if (team.isSuccess) {
     req.team = team.value;
   } else {
     err = new BadRequestError(team.value);
   }
-  
+
   next(err);
 }
 ```
@@ -106,19 +106,19 @@ There is another type, HV.Map that has a kind * -> * -> *.
 It takes 2 types, one for Keys and one for Values: HV.Map(HV.String, HV.Number).
 If you wanted a Map from Strings to Arrays, you might try to do this:
 ```javascript
-const stringToArrays = HV.Map(HV.String, HV.Array);
+const StringToArrays = HV.Map(HV.String, HV.Array);
 ```
 But that it doesn't make any sense as HV.Array is not a type.
 What you want to do is probably this:
 ```javascript
-const stringToArrays = HV.Map(HV.String, HV.Array(HV.Any));
+const StringToArrays = HV.Map(HV.String, HV.Array(HV.Any));
 ```
 HV.Array(HV.Any) gives you back JS Standard Arrays and allows you to do [1, 'abc', true].
 It however can't be undefined or null instead of an Array, for that you need HV.Optional and HV.Nullable...
 So if we wanted to removed restrictions of our typesystem completely for an Array, we would define it like so:
 
 ```javascript
-const standardArray = HV.Optional(HV.Nullable(HV.Array(HV.Any)));
+const StandardArray = HV.Optional(HV.Nullable(HV.Array(HV.Any)));
 ```
 Of course this gets you back into the same situation you were in before, but its good to know it is possible to do it.
 Use Optional and especially Nullable sparingly.
@@ -129,13 +129,13 @@ Meaning you can also write it like so:
 const R = require('ramda');
 const HV = require('higher-validation');
 
-const nullableAndOptionalArray = R.compose(
+const NOArray = R.compose(
   HV.Optional,
   HV.Nullable,
   HV.Array
 );
 
-const standardArray = nullableAndOptionalArray(HV.Any);
+const StandardArray = NOArray(HV.Any);
 ```
 
 This composiblity is what allows you to create complex objects from simpler ones.
@@ -144,12 +144,40 @@ I also Curry functions everywhere, so you can partially apply a type constructor
 const R = require('ramda');
 const HV = require('higher-validation');
 
-const noMapOfStringTo = R.compose(
+const NOMapOfStringTo = R.compose(
   HV.Optional,
   HV.Nullable,
   HV.Map(HV.String)
 );
 
-const noMapOfStringToAny = noMapOfStringTo(HV.Any);
+const noMapOfStringToAny = NOMapOfStringTo(HV.Any);
 ```
+
+Another interesting thing to do would be to restrict the Range of a Type.  There are many functions available for this, and because our types are "First Class" we can mix values and types in one function to allow us to do this easily.
+```javascript
+const OneTo20 = HV.Range(1, 20, HV.Number);
+const NonEmptyString = HV.Length(1, Infinity, HV.String);  // Built in
+const AlphaNumericString = HV.Match(/^[A-z0-9]+$/, HV.String);  // Built in
+```
+This allows for some pretty complicated Types to be defined.  And mixed with some knowledge of XSS you could actually secure you're applications from certain attack vectors.  At this point there isn't any implementation of say NonHTMLString for example, but it is not beyond this libraries capabilities to do so.
+
+You could do this yourself either by combining type constructors and range restrictors, or manually via HV.Type:
+```javascript
+const HV = require('higher-validation');
+
+const EqualsA = HV.Type((success, failure) => value => {
+ if (value === 'A') {
+   return success(value);
+ } else {
+   return failure('Not an A');
+ }
+});
+
+console.log(EqualsA('meow'));
+// Validation { value: [ 'Not an A' ] } -- failure
+
+console.log(EqualsA('A'));
+// Validation { value: 'A' } -- success
+```
+As you can see, it is pretty similar to define an HV.Type as it is to define a Promise with resolve and reject.
 

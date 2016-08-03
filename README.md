@@ -11,22 +11,31 @@ Javascript's dynamic typing can make it easy to quickly develop simple applicati
 However, there reaches a point where it bites you, usually when you want to guarantee I/O matches a given criteria and it leaves you with code like so:
 
 ```javascript
-if (myobj === null || myobj === undefined) { ... }
+/* 
+ * {
+ *   a: String,
+ *   b: Number
+ * }
+ */
 
-var a = myobj.a || "";
-
-if (!isNaN(myobj.b)) {...}
+if (myobj) {
+  var a = myobj.a.toString() || "";
+  var b = Number(myobj.b);
+  
+  if (!isNaN(myobj.b)) {
+    ...
+  }
+}
 ```
 
-You end up validating the same things everywhere and creating a giant mess of speghetti.
+You cand end up with a giant tree of if statements everywhere just to get to the point of sane code and depending on whether you can fit your logic all together, you may end up validating the same things everywhere in different functions and creating a giant mess of speghetti.
 
-I wrote this library because I was sick of it...
 I wanted the benefits of a strongly typed language, but TypeScript, Purescript, Scalajs and Flow weren't cutting my usecase.
 I can manage to keep a strongly typed style on my own and use unit tests to make sure of correctness, but it's really the usecase of deserialization that I found was missing.
 
 I want to make sure some JSON input matched some specific criteria, a model of a complex object that I could guarantee is correct.
 
-I wanted something like this:
+I wanted something fairly easy to define, as if it were a like defining a type in another language, or just define a standard Javascript Object.
 
 ```javascript
 const HV = require('higher-validation');
@@ -50,7 +59,7 @@ I also didn't want a verification that the input matches the type, instead if it
 If you don't know what that is, that's ok... you don't really need to.  Just know that it's similar to a Array (you can map over it) but it only contains one value (with .value), and its also like a Promise where you can have two states: Success and Failure which you can call isSuccess or isFailure on the object to tell whether the input validated correctly.
 
 For failures I wanted to have a list of all of the things that are invalid about the object.
-There is nothing worse then using someone else's API and fixing one issue, making a call, then having to fix another issue, and another and another.  I also wanted to be able to tell specifically where the error is located in the Object so its easy to identify and fix.
+There is nothing worse when learning to use an API you get an error and fix one issue, make another call, then having to fix another issue, and another and another.  I also wanted to be able to tell specifically where the error is located in the Object so its easy to identify and fix.
 
 ```javascript
 const validateTeam(req, res, next) {
@@ -76,5 +85,71 @@ If you receive valid input isSuccess === true, and value is the validated Object
   'users: index 0: id: Not a valid UUID',
   ...
 ]
+```
+
+Let's take a look at the definition for Team again.
+
+```javascript
+const Team = HV.Object({
+  id: HV.UUID,
+  enabled: HV.Boolean,
+  users: HV.Array(User)
+});
+```
+
+See the definition for the users property? It's a Generic Type.  The HV.Array is a function that takes another HV.Type and returns a function that validates a Value.
+Generics are like functions, that take types as input and return a type as output.  They are also refered to as Higher Kinded Types (and that's where the name of this library comes from (in case you were wondering).
+Array is said to have a kind * -> * (type to type), its a function that takes one type and returns another type.
+Array isn't a type on its own... its a type constructor.  You pass it a type like String and you get back and type "Array Of Strings"
+
+There is another type, HV.Map that has a kind * -> * -> *.
+It takes 2 types, one for Keys and one for Values: HV.Map(HV.String, HV.Number).
+If you wanted a Map from Strings to Arrays, you might try to do this:
+```javascript
+const stringToArrays = HV.Map(HV.String, HV.Array);
+```
+But that it doesn't make any sense as HV.Array is not a type.
+What you want to do is probably this:
+```javascript
+const stringToArrays = HV.Map(HV.String, HV.Array(HV.Any));
+```
+HV.Array(HV.Any) gives you back JS Standard Arrays and allows you to do [1, 'abc', true].
+It however can't be undefined or null instead of an Array, for that you need HV.Optional and HV.Nullable...
+So if we wanted to removed restrictions of our typesystem completely for an Array, we would define it like so:
+
+```javascript
+const standardArray = HV.Optional(HV.Nullable(HV.Array(HV.Any)));
+```
+Of course this gets you back into the same situation you were in before, but its good to know it is possible to do it.
+Use Optional and especially Nullable sparingly.
+
+If you use Ramda or LoDash you might realize that above the type constructors are just functions composed with each other.
+Meaning you can also write it like so:
+```javascript
+const R = require('ramda');
+const HV = require('higher-validation');
+
+const nullableAndOptionalArray = R.compose(
+  HV.Optional,
+  HV.Nullable,
+  HV.Array
+);
+
+const standardArray = nullableAndOptionalArray(HV.Any);
+```
+
+This composiblity is what allows you to create complex objects from simpler ones.
+I also Curry functions everywhere, so you can partially apply a type constructor like Map for example:
+```javascript
+const R = require('ramda');
+const HV = require('higher-validation');
+
+const noMapOfStringTo = R.compose(
+  HV.Optional,
+  HV.Nullable,
+  HV.Map(HV.String)
+);
+
+const noMapOfStringToAny = noMapOfStringTo(HV.Any);
 ```
 

@@ -98,7 +98,7 @@ const Team = HV.Object({
 ```
 
 See the definition for the users property? It's a Generic Type.  The HV.Array is a function that takes another HV.Type and returns a function that validates a Value.
-Generics are like functions, that take types as input and return a type as output.  They are also refered to as Higher Kinded Types (and that's where the name of this library comes from in case you were wondering).
+Generics are like functions that take types as input and return a type as output.  They are also refered to as Higher Kinded Types (and that's where the name of this library comes from in case you were wondering).
 Array is said to have a kind * -> * (type to type), its a function that takes one type and returns another type.
 Array isn't a type on its own... its a type constructor.  You pass it a type like String and you get back and type "Array Of Strings"
 

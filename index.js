@@ -12,6 +12,7 @@ module.exports = {
   UUID: require('./lib/UUID'),
   URL: require('./lib/URL'),
   Email: require('./lib/Email'),
+  NonEmptyString: require('./lib/NonEmptyString'),
   ISO8601String: require('./lib/ISO8601String'),
   Type: require('./lib/Type'),
   Nullable: require('./lib/Nullable'),

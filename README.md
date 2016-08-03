@@ -35,6 +35,8 @@ I can manage to keep a strongly typed style on my own and use unit tests to make
 
 I want to make sure some JSON input matched some specific criteria, a model of a complex object that I could guarantee is correct.
 
+I need Types, but at Runtime, not compile time... a dream of [Andreas Rossberg](https://drive.google.com/file/d/0B1v38H64XQBNT1p2XzFGWWhCR1k/view)
+
 I wanted something fairly easy to define, as if it were a like defining a type in another language, or just define a standard Javascript Object.
 
 ```javascript

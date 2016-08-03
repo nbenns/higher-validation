@@ -123,7 +123,7 @@ const standardArray = HV.Optional(HV.Nullable(HV.Array(HV.Any)));
 Of course this gets you back into the same situation you were in before, but its good to know it is possible to do it.
 Use Optional and especially Nullable sparingly.
 
-If you use Ramda or LoDash you might realize that above the type constructors are just functions composed with each other.
+If you use [Ramda](http://ramdajs.com/0.21.0/index.html) or [LoDash](https://lodash.com/) you might realize that above the type constructors are just functions composed with each other.
 Meaning you can also write it like so:
 ```javascript
 const R = require('ramda');

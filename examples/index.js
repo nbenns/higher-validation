@@ -7,7 +7,7 @@ const SubModel = HV.Object({
   jim: HV.Number
 });
 
-const Meow = HV.Match(HV.String, /^meow/);
+const Meow = HV.Match(/^meow/, HV.String);
 const MeowToNumber = HV.Map(Meow, HV.Number);
 const ArrayOfSubModel = HV.Array(SubModel);
 

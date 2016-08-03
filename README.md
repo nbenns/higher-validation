@@ -28,7 +28,7 @@ if (myobj) {
 }
 ```
 
-You cand end up with a giant tree of if statements everywhere just to get to the point of sane code and depending on whether you can fit your logic all together, you may end up validating the same things everywhere in different functions and creating a giant mess of speghetti.
+You can end up with a giant tree of if statements everywhere just to get to the point of sane code and depending on whether you can fit your logic all together, you may end up validating the same things everywhere in different functions and creating a giant mess of speghetti.
 
 I wanted the benefits of a strongly typed language, but TypeScript, Purescript, Scalajs and Flow weren't cutting my usecase.
 I can manage to keep a strongly typed style on my own and use unit tests to make sure of correctness, but it's really the usecase of deserialization that I found was missing.

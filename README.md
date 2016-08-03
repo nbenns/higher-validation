@@ -150,7 +150,7 @@ const NOMapOfStringTo = R.compose(
   HV.Map(HV.String)
 );
 
-const noMapOfStringToAny = NOMapOfStringTo(HV.Any);
+const NOMapOfStringToAny = NOMapOfStringTo(HV.Any);
 ```
 
 Another interesting thing to do would be to restrict the Range of a Type.  There are many functions available for this, and because our types are "First Class" we can mix values and types in one function to allow us to do this easily.

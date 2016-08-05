@@ -79,7 +79,7 @@ const validateTeam(req, res, next) {
 }
 ```
 
-If you receive valid input isSuccess === true, then the value is the validated Object.  If the input is invalid you will receive and Array of Strings like this:
+If you receive valid input isSuccess === true, then the value is the validated Object.  If the input is invalid you will receive an Array of Strings like this:
 
 ```javascript
 [

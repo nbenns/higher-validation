@@ -19,7 +19,7 @@
     "gulp": "^3.9.1",
     "gulp-check-deps": "^1.4.1",
     "gulp-coveralls": "^0.1.4",
-    "gulp-istanbul": "^1.0.0",
+    "gulp-istanbul": "^1.1.0",
     "gulp-jscs": "^4.0.0",
     "gulp-jshint": "^2.0.1",
     "gulp-jsinspect": "^2.0.0",
@@ -28,7 +28,7 @@
     "isparta": "^4.0.0",
     "istanbul": "^0.4.4",
     "jscs-stylish": "^0.3.1",
-    "jshint": "^2.9.2",
+    "jshint": "^2.9.3",
     "mocha": "^3.0.0",
     "sinon": "^1.17.4"
   },

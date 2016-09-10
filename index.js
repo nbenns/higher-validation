@@ -9,6 +9,7 @@ module.exports = {
   Array: require('./lib/Array'),
   Map: require('./lib/Map'),
   String: require('./lib/String'),
+  Primative: require('./lib/Primative'),
   UUID: require('./lib/UUID'),
   URL: require('./lib/URL'),
   Email: require('./lib/Email'),

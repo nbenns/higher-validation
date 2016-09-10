@@ -22,6 +22,7 @@ module.exports = {
   Optional: require('./lib/Optional'),
   Range: require('./lib/Range'),
   Match: require('./lib/Match'),
-  Length: require('./lib/Length')
+  Length: require('./lib/Length'),
+  Xor: require('./lib/Xor')
 };
 

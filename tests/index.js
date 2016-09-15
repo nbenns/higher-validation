@@ -34,6 +34,11 @@ describe('Index', () => {
     it('has a property Boolean that is a Function', () => HV.Boolean.should.be.instanceof(Function));
   });
 
+  describe('Exports Primative', () => {
+    it('has a property called Primative', () => Object.keys(HV).should.contains('Primative'));
+    it('has a property Primative that is a Function', () => HV.Boolean.should.be.instanceof(Function));
+  });
+
   describe('Exports Number', () => {
     it('has a property called Number', () => Object.keys(HV).should.contains('Number'));
     it('has a property Number that is a Function', () => HV.Number.should.be.instanceof(Function));
@@ -94,4 +99,9 @@ describe('Index', () => {
     it('has a property Length that is a Function', () => HV.Length.should.be.instanceof(Function));
   });
 
+  describe('Exports Xor', () => {
+    it('has a property called Xor', () => Object.keys(HV).should.contains('Xor'));
+    it('has a property Xor that is a Function', () => HV.Xor.should.be.instanceof(Function));
+  });
 });
+

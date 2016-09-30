@@ -2,7 +2,7 @@
 
 const Validation = require('data.validation');
 const {Success, Failure} = Validation;
-const Set = require('../../lib/Set');
+const HVSet = require('../../lib/Set');
 
 require('chai').should();
 
@@ -17,7 +17,7 @@ const nonSetVal = true;
 describe('Set', () => {
 
   describe('returns Success when called with a value which matches the type and a set value', () => {
-    const result = Set(testSet, valid, inSetVal);
+    const result = HVSet(testSet, valid, inSetVal);
 
     it('is a Validation Object', () => result.should.be.instanceof(Validation));
     it('is a Success', () => result.isSuccess.should.be.true);
@@ -25,7 +25,7 @@ describe('Set', () => {
   });
 
   describe('returns Failure when called with a value that is not valid for the type', () => {
-    const result = Set(testSet, invalid, inSetVal);
+    const result = HVSet(testSet, invalid, inSetVal);
 
     it('is a Validation Object', () => result.should.be.instanceof(Validation));
     it('is a Failure', () => result.isFailure.should.be.true);
@@ -34,7 +34,7 @@ describe('Set', () => {
   });
 
   describe('returns Failure when called with a value that is a match in the set', () => {
-    const result = Set(testSet, valid, nonSetVal);
+    const result = HVSet(testSet, valid, nonSetVal);
 
     it('is a Validation Object', () => result.should.be.instanceof(Validation));
     it('is a Failure', () => result.isFailure.should.be.true);

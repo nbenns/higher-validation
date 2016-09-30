@@ -103,5 +103,10 @@ describe('Index', () => {
     it('has a property called Xor', () => Object.keys(HV).should.contains('Xor'));
     it('has a property Xor that is a Function', () => HV.Xor.should.be.instanceof(Function));
   });
+
+  describe('Exports Set', () => {
+    it('has a property called Set', () => Object.keys(HV).should.contains('Set'));
+    it('has a property Set that is a Function', () => HV.Set.should.be.instanceof(Function));
+  });
 });
 

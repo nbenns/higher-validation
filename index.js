@@ -24,6 +24,7 @@ module.exports = {
   Range: require('./lib/Range'),
   Match: require('./lib/Match'),
   Length: require('./lib/Length'),
-  Xor: require('./lib/Xor')
+  Xor: require('./lib/Xor'),
+  Set: require('./lib/Set')
 };
 

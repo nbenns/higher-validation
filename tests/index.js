@@ -108,5 +108,10 @@ describe('Index', () => {
     it('has a property called Set', () => Object.keys(HV).should.contains('Set'));
     it('has a property Set that is a Function', () => HV.Set.should.be.instanceof(Function));
   });
+
+  describe('Exports Join', () => {
+    it('has a property called Join', () => Object.keys(HV).should.contains('Join'));
+    it('has a property Join that is a Function', () => HV.Join.should.be.instanceof(Function));
+  });
 });
 

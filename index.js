@@ -6,6 +6,7 @@ module.exports = {
   Boolean: require('./lib/Boolean'),
   Number: require('./lib/Number'),
   Object: require('./lib/Object'),
+  Tuple: require('./lib/Tuple'),
   Array: require('./lib/Array'),
   Map: require('./lib/Map'),
   String: require('./lib/String'),

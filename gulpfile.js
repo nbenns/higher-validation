@@ -60,7 +60,7 @@ gulp.task('cpd', () =>
 gulp.task('security', done =>
   nsp({
     package: __dirname + '/package.json',
-    stopOnError: true
+    stopOnError: false
   }, done)
 );
 
